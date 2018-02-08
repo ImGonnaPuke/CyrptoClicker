@@ -8,13 +8,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 import android.widget.TextView;
+import android.os.Handler;
 
 public class MainActivity extends AppCompatActivity {
 
     TextView showValue;
-    int counter = 0;
-
+    double counter = 0;
     public Button Up;
+    long tInterval = 500;
+    Upgrades upgrades = new Upgrades();
 
     public void uGrades(){
         Up =  findViewById(R.id.upgrades);
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
         uGrades();
         Achievements();
 
-        showValue = (TextView) findViewById(R.id.Counter);
+        showValue = findViewById(R.id.Counter);
+
+        handler.postDelayed(runnable, tInterval);
     }
 
         /*
@@ -66,9 +71,21 @@ public class MainActivity extends AppCompatActivity {
         });
         */
 
-        public void test(View view){
-            counter ++;
-            showValue.setText(Integer.toString(counter));
+    public void test(View view){
+        counter ++;
+        showValue.setText(Integer.toString((int) counter));
+    }
 
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            increment();
+            handler.postDelayed(this, tInterval);
+        }
+    };
+
+    private void increment(){
+        counter += upgrades.cycle() * ((double) tInterval/1000);
+        showValue.setText(Integer.toString((int) counter));
     }
 }

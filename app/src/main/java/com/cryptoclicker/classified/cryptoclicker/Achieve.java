@@ -63,7 +63,7 @@ public class Achieve {
     }
 
     /**
-     * Checks score based achievements for completion
+     * Checks if the required score has been reached
      */
 
     public void checkCount() {

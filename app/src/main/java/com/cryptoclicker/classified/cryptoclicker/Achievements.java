@@ -11,6 +11,7 @@ public class Achievements extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_achievements);
     }
+    //Test Achievements
     Achieve one = new Achieve(10, 0, "Collected 10 coins");
     Achieve two = new Achieve(100, 0, "Collected 100 coins");
     Achieve three = new Achieve(1000, 0, "Collected 1000 coins");

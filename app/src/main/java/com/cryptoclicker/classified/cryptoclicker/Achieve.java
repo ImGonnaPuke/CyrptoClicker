@@ -4,7 +4,7 @@ package com.cryptoclicker.classified.cryptoclicker;
  * Created by Miguel on 1/31/2018.
  */
 
-public class Achieve implements AchievementsPage {
+public class Achieve {
     private int cryCount;
     private int unlockCount;
     private boolean needsCount;

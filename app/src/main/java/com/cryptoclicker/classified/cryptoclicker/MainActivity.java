@@ -5,7 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.TextView;
 import android.os.Handler;
@@ -48,7 +51,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        ImageView backgroundimage = (ImageView) findViewById(R.id.background);
+        Animation backgroundrotate = AnimationUtils.loadAnimation(this, R.anim.rotate);
+        backgroundimage.startAnimation(backgroundrotate);
         uGrades();
         Achievements();
 

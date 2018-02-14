@@ -3,10 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Anal-Repository.iml" filepath="$PROJECT_DIR$/Anal-Repository.iml" />
-      <module fileurl="file://C:\Users\ollux\Desktop\School\CSI 2999 - Sophmore Project\Anal-Repository\Anal-Repository.iml" filepath="C:\Users\ollux\Desktop\School\CSI 2999 - Sophmore Project\Anal-Repository\Anal-Repository.iml" />
-      <module fileurl="file://D:\Miguel\Documents\Anal-Repository\CryptoClicker.iml" filepath="D:\Miguel\Documents\Anal-Repository\CryptoClicker.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\ollux\Desktop\School\CSI 2999 - Sophmore Project\Anal-Repository\app\app.iml" filepath="C:\Users\ollux\Desktop\School\CSI 2999 - Sophmore Project\Anal-Repository\app\app.iml" />
     </modules>
   </component>
 </project>

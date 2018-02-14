@@ -1,6 +1,7 @@
 package com.cryptoclicker.classified.cryptoclicker;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void playSound() {
+        MediaPlayer coinDropMediaPlayer = MediaPlayer.create(this, R.raw.coin_drop);
+        coinDropMediaPlayer.start();
+    }
+
     private Handler handler = new Handler();
 
     @Override
@@ -78,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void test(View view){
         counter ++;
+        playSound();
         showValue.setText(Integer.toString((int) counter));
     }
 

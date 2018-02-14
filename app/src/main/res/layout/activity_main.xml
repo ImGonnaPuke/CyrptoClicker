@@ -71,6 +71,7 @@
         android:layout_marginTop="8dp"
         android:background="@null"
         android:onClick="test"
+        android:soundEffectsEnabled="false"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

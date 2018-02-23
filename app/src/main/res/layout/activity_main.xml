@@ -23,25 +23,27 @@
 
     <TextView
         android:id="@+id/Counter"
-        android:layout_width="278dp"
-        android:layout_height="64dp"
-        android:fontFamily="@font/orbitron"
+        android:layout_width="451dp"
+        android:layout_height="77dp"
+        android:fontFamily="@font/rubik"
         android:gravity="center"
+        android:background="@color/textbackground"
         android:text="Currency"
         android:textSize="50dp"
+        android:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/magic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.57" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/upgrades"
-        android:layout_width="165dp"
+        android:layout_width="145dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
-        android:fontFamily="@font/orbitron"
+        android:fontFamily="@font/rubik"
         android:text="Upgrades"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,7 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Achievements"
-        android:fontFamily="@font/orbitron"
+        android:fontFamily="@font/rubik"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/upgrades"
         app:layout_constraintHorizontal_bias="0.1"
@@ -61,24 +63,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.965" />
 
-    <ImageButton
+    <Button
         android:id="@+id/magic"
         android:layout_width="330dp"
         android:layout_height="346dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@null"
+        android:background="@drawable/button_effect"
         android:onClick="test"
-        android:soundEffectsEnabled="false"
         android:scaleType="fitCenter"
+        android:soundEffectsEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.476"
+        app:layout_constraintVertical_bias="0.498"
         app:srcCompat="@drawable/bitcoin" />
 
 

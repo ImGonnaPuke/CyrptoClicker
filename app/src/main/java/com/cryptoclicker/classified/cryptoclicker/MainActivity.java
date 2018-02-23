@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
     public void test(View view){
         counter ++;
         playSound();
-        showValue.setText(Integer.toString((int) counter));
+        showValue.setText(Integer.toString((int) counter)+ " BTC");
     }
 
     private Runnable runnable = new Runnable() {
@@ -98,6 +98,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void increment(){
         counter += upgrades.cycle() * ((double) tInterval/1000);
-        showValue.setText(Integer.toString((int) counter));
+        showValue.setText(Integer.toString((int) counter)+ " BTC");
     }
 }

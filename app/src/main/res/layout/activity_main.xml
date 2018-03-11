@@ -25,12 +25,12 @@
         android:id="@+id/Counter"
         android:layout_width="451dp"
         android:layout_height="77dp"
+        android:autoSizeTextType="uniform"
+        android:background="@color/textbackground"
         android:fontFamily="@font/rubik"
         android:gravity="center"
-        android:background="@color/textbackground"
         android:text="Currency"
         android:textSize="50dp"
-        android:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/magic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -54,8 +54,8 @@
         android:id="@+id/achi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Achievements"
         android:fontFamily="@font/rubik"
+        android:text="Achievements"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/upgrades"
         app:layout_constraintHorizontal_bias="0.1"
@@ -77,6 +77,30 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.498"
         app:srcCompat="@drawable/bitcoin" />
+
+    <Button
+        android:id="@+id/hide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="hide"
+        app:layout_constraintBottom_toTopOf="@+id/upgrades"
+        app:layout_constraintEnd_toStartOf="@+id/background"
+        app:layout_constraintHorizontal_bias="0.131"
+        app:layout_constraintStart_toEndOf="@+id/magic"
+        app:layout_constraintTop_toBottomOf="@+id/magic"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="show"
+        app:layout_constraintBottom_toTopOf="@+id/background"
+        app:layout_constraintEnd_toStartOf="@+id/magic"
+        app:layout_constraintHorizontal_bias="0.77"
+        app:layout_constraintStart_toEndOf="@+id/magic"
+        app:layout_constraintTop_toBottomOf="@+id/magic"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </android.support.constraint.ConstraintLayout>

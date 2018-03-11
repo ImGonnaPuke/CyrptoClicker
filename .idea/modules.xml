@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Anal-Repository.iml" filepath="$PROJECT_DIR$/Anal-Repository.iml" />
+      <module fileurl="file://C:\Users\Adam\AndroidStudioProjects\CryptoClicker\Anal-Repository.iml" filepath="C:\Users\Adam\AndroidStudioProjects\CryptoClicker\Anal-Repository.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CryptoClicker.iml" filepath="$PROJECT_DIR$/CryptoClicker.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

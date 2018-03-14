@@ -65,7 +65,7 @@ public class Achieve extends MainActivity {
 
     public void checkCount() {
         if (needsCount) {
-            if (getScore() >= unlockCount) {
+            if (getCurrency() >= unlockCount) {
                 this.unlocked();
             }
         }

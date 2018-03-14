@@ -164,4 +164,9 @@ public class MainActivity extends AppCompatActivity {
         counter += upgrades.cycle() * ((double) tInterval/1000);
         showValue.setText(Integer.toString((int) counter)+ " BTC");
     }
+
+    //Miguel: I put this method in to allow achievements to compare the score to unlock values, but I don't know if it works at runtime
+    public double getScore() {
+        return counter;
+    }
 }

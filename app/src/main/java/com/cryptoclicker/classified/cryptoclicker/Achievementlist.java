@@ -6,7 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-
+//This was a test section to attempt to get the layout editor working, would have deleted but android signals unsafe to delete for some reason, please ignore
 public class Achievementlist extends AppCompatActivity {
 
     @Override
@@ -30,5 +30,5 @@ public class Achievementlist extends AppCompatActivity {
         test.unlocked();
     }
 
-    Achieve test = new Achieve(10, 0, "Collected 10 coins");
+    Achieve test = new Achieve(10);
 }

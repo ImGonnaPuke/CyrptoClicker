@@ -1,6 +1,8 @@
 package com.cryptoclicker.classified.cryptoclicker;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
@@ -20,13 +22,62 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     TextView showValue;
-
-
+    DatabaseHandler db = new DatabaseHandler (this);
+    SQLiteDatabase database;
     double counter = 0;
     public Button Up;
     long tInterval = 500;
     Upgrades upgrades = new Upgrades();
     public int rand;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        ImageView backgroundimage = (ImageView) findViewById(R.id.background);
+        Animation backgroundrotate = AnimationUtils.loadAnimation(this, R.anim.rotate);
+        backgroundimage.startAnimation(backgroundrotate);
+        uGrades();
+        Achievements();
+        saveGame();
+        loadGame();
+        Show();
+        Hide();
+        hide1.setVisibility(View.INVISIBLE);
+        showValue = findViewById(R.id.Counter);
+        handler.postDelayed(runnable, tInterval);
+
+
+    }
+
+    public Button savegame;
+
+    public void saveGame() {
+        savegame = findViewById(R.id.savegame);
+        savegame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                writeCurrency();
+                Toast.makeText(getApplicationContext(),"Game saved successfully.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public Button loadgame;
+
+    public void loadGame() {
+        loadgame = findViewById(R.id.loadgame);
+        loadgame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                counter = getCurrency();
+                showValue.setText(Integer.toString((int) counter)+ " BTC");
+                Toast.makeText(getApplicationContext(),"Game loaded successfully.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     public void uGrades(){
         Up =  findViewById(R.id.upgrades);
@@ -52,9 +103,25 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+    public void writeCurrency() {
+        database = db.getWritableDatabase();
+        database.execSQL("UPDATE Data SET Currency=('"+counter+"')" );
+    }
+
+    public int getCurrency() {
+        SQLiteDatabase database = db.getReadableDatabase();
+        Cursor cursor = db.fetchCurrency(database);
+        cursor.moveToFirst();
+        int currency = cursor.getInt(0);
+        return currency;
+    }
+
     public void playSound() {
         MediaPlayer coinDropMediaPlayer = MediaPlayer.create(this, R.raw.coin_drop);
         coinDropMediaPlayer.start();
+        coinDropMediaPlayer.release();
+
     }
 
     private Handler handler = new Handler();
@@ -85,38 +152,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ImageView backgroundimage = (ImageView) findViewById(R.id.background);
-        Animation backgroundrotate = AnimationUtils.loadAnimation(this, R.anim.rotate);
-        backgroundimage.startAnimation(backgroundrotate);
-        uGrades();
-        Achievements();
-        Show();
-        Hide();
-
-
-        hide1.setVisibility(View.INVISIBLE);
-
-
-
-        showValue = findViewById(R.id.Counter);
-
-        handler.postDelayed(runnable, tInterval);
-
-
-
-
-
-
-
-    }
-
 
         /*
         Button main1 =  findViewById(R.id.magic);

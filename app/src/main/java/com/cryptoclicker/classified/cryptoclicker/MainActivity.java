@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         ImageView backgroundimage = (ImageView) findViewById(R.id.background);
         Animation backgroundrotate = AnimationUtils.loadAnimation(this, R.anim.rotate);
         backgroundimage.startAnimation(backgroundrotate);
-        uGrades();
         Achievements();
         saveGame();
         loadGame();
@@ -79,15 +78,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void uGrades(){
-        Up =  findViewById(R.id.upgrades);
-        Up.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent why = new Intent(MainActivity.this, Upgrades.class);
-                startActivity(why);
-            }
-        });
+    public void uGrades(View view) {
+        Intent why = new Intent(MainActivity.this, Upgrades.class);
+        why.putExtra("coins", counter);
+        startActivityForResult(why, 1);
     }
 
     public Button Ach;
@@ -203,5 +197,16 @@ public class MainActivity extends AppCompatActivity {
     //Miguel: I put this method in to allow achievements to compare the score to unlock values, but I don't know if it works at runtime
     public double getScore() {
         return counter;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                counter = data.getDoubleExtra("coins", counter);
+                showValue.setText(Integer.toString((int) counter)+ " BTC");
+            }
+        }
     }
 }

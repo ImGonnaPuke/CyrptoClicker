@@ -14,10 +14,10 @@ public class Achieve extends MainActivity {
     private boolean hasUpgrade; // Tells if the required achievement is aquired
     //private int hasUpgrades; // Setup for checking higher numbers of the same upgrades
     private boolean unlock;  // Shows the achievements is unlocked
-    //private int effect; // Possible system for determining rewards
-    //private int min; // minimum value for progress bar, should probably always be zero
-    //private int max; // max value for progress bar
-    //private String tag;  // Written requirement for the achievement
+    private int effect; // Possible system for determining rewards
+    private int min; // minimum value for progress bar, should probably always be zero
+    private int max; // max value for progress bar
+    private String tag;  // Written requirement for the achievement
 
     /**
      * Constructor for score based achievements

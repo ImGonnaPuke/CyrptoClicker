@@ -1,9 +1,12 @@
 package com.cryptoclicker.classified.cryptoclicker;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 public class Achievements extends AppCompatActivity {
 
@@ -17,10 +20,44 @@ public class Achievements extends AppCompatActivity {
         setContentView(R.layout.activity_achievements);
 
 
+        final ProgressBar progressBar = (ProgressBar)findViewById(R.id.progressBar);
+        //progressBar.setProgress();
+
+        final ProgressBar progressBar2 = (ProgressBar)findViewById(R.id.progressBar2);
+        final ProgressBar progressBar3 = (ProgressBar)findViewById(R.id.progressBar3);
+        final ProgressBar progressBar4 = (ProgressBar)findViewById(R.id.progressBar4);
+        final ProgressBar progressBar5 = (ProgressBar)findViewById(R.id.progressBar5);
+        final ProgressBar progressBar6 = (ProgressBar)findViewById(R.id.progressBar6);
+        final ProgressBar progressBar7 = (ProgressBar)findViewById(R.id.progressBar7);
+        final ProgressBar progressBar8 = (ProgressBar)findViewById(R.id.progressBar8);
+
+        //public int getCurrency() {
+            //SQLiteDatabase database = db.getReadableDatabase();
+            //Cursor cursor = db.fetchCurrency(database);
+            //cursor.moveToFirst();
+            //int currency = cursor.getInt(0);
+            //return currency;
+        //}
+
+        //Test Achievements
+        final Achieve one = new Achieve(10);
+        final Achieve two = new Achieve(100);
+        final Achieve three = new Achieve(1000);
+        final Achieve four = new Achieve(10000);
+        final Achieve five = new Achieve(100000);
+        final Achieve six = new Achieve(1000000);
+        final Achieve seven = new Achieve(1000000000);
+        //Achieve eight = new Achieve(1 trillion); number too large
+
+
         final Button button = findViewById(R.id.button2);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                one.checkCount();
+                //one.checkCount();
+
+                if (one.getCurrency() > one.getUnlockCount()) {
+                    one.unlocked();
+                }
                 if (one.getUn()) {
                     achMultiplier += .05;
                     button.setEnabled(false);
@@ -101,16 +138,9 @@ public class Achievements extends AppCompatActivity {
             }
         });
 
+
     }
-    //Test Achievements
-    Achieve one = new Achieve(10);
-    Achieve two = new Achieve(100);
-    Achieve three = new Achieve(1000);
-    Achieve four = new Achieve(10000);
-    Achieve five = new Achieve(100000);
-    Achieve six = new Achieve(1000000);
-    Achieve seven = new Achieve(1000000000);
-    //Achieve eight = new Achieve(1 trillion); number too large
+
 
     /**
      * The following are the commands when any button on the achievements page is pressed, I planned

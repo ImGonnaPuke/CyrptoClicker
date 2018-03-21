@@ -63,13 +63,15 @@ public class Achieve extends MainActivity {
      * Checks if the required score has been reached
      */
 
-    public void checkCount() {
-        if (needsCount) {
-            if (getCurrency() >= unlockCount) {
-                this.unlocked();
-            }
-        }
-    }
+
+
+    //public void checkCount() {
+        //if (needsCount) {
+            //if (getCurrency() >= unlockCount) {
+               // this.unlocked();
+            //}
+        //}
+    //}
 
     /**
      * Method that tells whether the achievements is already unlocked or not
@@ -77,5 +79,9 @@ public class Achieve extends MainActivity {
      */
     public boolean getUn() {
         return unlock;
+    }
+
+    public int getUnlockCount() {
+        return unlockCount;
     }
 }

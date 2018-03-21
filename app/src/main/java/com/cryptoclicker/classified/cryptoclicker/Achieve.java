@@ -84,4 +84,8 @@ public class Achieve extends MainActivity {
     public int getUnlockCount() {
         return unlockCount;
     }
+
+    public double testGrab() {
+        return getScore();
+    }
 }

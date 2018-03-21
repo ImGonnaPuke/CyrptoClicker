@@ -81,7 +81,10 @@ public class Achievements extends AppCompatActivity {
         final Button button3 = findViewById(R.id.button3);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                three.checkCount();
+                //three.checkCount();
+                if (three.testGrab() > three.getUnlockCount()) {
+                    three.unlocked();
+                }
                 if (three.getUn()) {
                     achMultiplier += .1;
                     button3.setEnabled(false);

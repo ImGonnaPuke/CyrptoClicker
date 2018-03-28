@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Button;
 
@@ -23,6 +26,18 @@ public class Upgrades extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upgrades);
+        ImageView backgroundimage = (ImageView) findViewById(R.id.background2);
+        Animation backgroundrotate = AnimationUtils.loadAnimation(this, R.anim.rotate);
+        backgroundimage.startAnimation(backgroundrotate);
+        ImageView imageView = (ImageView) findViewById(R.id.pi);
+        ImageView imageView2 = (ImageView) findViewById(R.id.rig);
+        ImageView imageView3 = (ImageView) findViewById(R.id.server);
+        ImageView imageView4 = (ImageView) findViewById(R.id.supercomp);
+        Animation pulse = AnimationUtils.loadAnimation(this, R.anim.breathe);
+        imageView.startAnimation(pulse);
+        imageView2.startAnimation(pulse);
+        imageView3.startAnimation(pulse);
+        imageView4.startAnimation(pulse);
         coins = getIntent().getDoubleExtra("coins",0);
         ug[0] = findViewById(R.id.ug0);
         ug[1] = findViewById(R.id.ug1);

@@ -5,7 +5,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 public class Achievements extends AppCompatActivity {
@@ -18,7 +21,9 @@ public class Achievements extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_achievements);
-
+        ImageView backgroundimage = (ImageView) findViewById(R.id.background2);
+        Animation backgroundrotate = AnimationUtils.loadAnimation(this, R.anim.rotate);
+        backgroundimage.startAnimation(backgroundrotate);
 
         final ProgressBar progressBar = (ProgressBar)findViewById(R.id.progressBar);
         //progressBar.setProgress();
@@ -69,7 +74,7 @@ public class Achievements extends AppCompatActivity {
         final Button button2 = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                two.checkCount();
+                //two.checkCount();
                 if (two.getUn()) {
                     achMultiplier += .05;
                     button2.setEnabled(false);
@@ -96,7 +101,7 @@ public class Achievements extends AppCompatActivity {
         final Button button4 = findViewById(R.id.button5);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                four.checkCount();
+                //four.checkCount();
                 if (four.getUn()) {
                     achMultiplier += .1;
                     button4.setEnabled(false);
@@ -108,7 +113,7 @@ public class Achievements extends AppCompatActivity {
         final Button button5 = findViewById(R.id.button6);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                five.checkCount();
+                //five.checkCount();
                 if (five.getUn()) {
                     achMultiplier += .1;
                     button5.setEnabled(false);
@@ -120,7 +125,7 @@ public class Achievements extends AppCompatActivity {
         final Button button6 = findViewById(R.id.button7);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                six.checkCount();
+                //six.checkCount();
                 if (six.getUn()) {
                     achMultiplier += .1;
                     button6.setEnabled(false);
@@ -132,7 +137,7 @@ public class Achievements extends AppCompatActivity {
         final Button button7 = findViewById(R.id.button8);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                seven.checkCount();
+                //seven.checkCount();
                 if (seven.getUn()) {
                     achMultiplier += .2;
                     button7.setEnabled(false);

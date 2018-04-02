@@ -25,9 +25,10 @@ public class MainActivity extends AppCompatActivity {
     DatabaseHandler db = new DatabaseHandler (this);
     SQLiteDatabase database;
     double counter = 0;
+    int pwrClick = 1;
     public Button Up;
     long tInterval = 500;
-    Upgrades upgrades = new Upgrades();
+    Upgrades upgrades = new Upgrades();;
     public int rand;
 
     @Override
@@ -39,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         ImageView backgroundimage = (ImageView) findViewById(R.id.background);
         Animation backgroundrotate = AnimationUtils.loadAnimation(this, R.anim.rotate);
         backgroundimage.startAnimation(backgroundrotate);
-        Achievements();
         saveGame();
         loadGame();
         Show();
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         showValue = findViewById(R.id.Counter);
         handler.postDelayed(runnable, tInterval);
 
-
+       pwrClick = upgrades.getPower();
     }
 
     public Button savegame;
@@ -86,15 +86,9 @@ public class MainActivity extends AppCompatActivity {
 
     public Button Ach;
 
-    public void Achievements(){
-        Ach =  findViewById(R.id.achi);
-        Ach.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent why1 = new Intent(MainActivity.this, Achievements.class);
-                startActivity(why1);
-            }
-        });
+    public void Achievements(View view){
+        Intent why1 = new Intent(MainActivity.this, Achievements.class);
+        startActivity(why1);
     }
 
 
@@ -122,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
     public Button show1;
     public void Show(){
-        show1 =  findViewById(R.id.show);
+       show1 = findViewById(R.id.show);
        show1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -162,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
         */
 
     public void test(View view){
-        counter ++;
+        counter += pwrClick;
         playSound();
         showValue.setText(Integer.toString((int) counter)+ " BTC");
 
@@ -174,8 +168,7 @@ public class MainActivity extends AppCompatActivity {
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
-        //    increment();
-
+            increment();
             handler.postDelayed(this, tInterval);
 
         }
@@ -205,6 +198,7 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 1) {
             if(resultCode == RESULT_OK) {
                 counter = data.getDoubleExtra("coins", counter);
+                pwrClick = data.getIntExtra("power", pwrClick);
                 showValue.setText(Integer.toString((int) counter)+ " BTC");
             }
         }

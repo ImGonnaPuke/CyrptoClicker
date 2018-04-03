@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Button;
 
+import java.text.DecimalFormat;
+
 public class Upgrades extends AppCompatActivity {
 
     private static int upgrade[] = new int[] {0,0,0,0}; // usb stick, mining rig, server rack, supercomputer
@@ -51,7 +53,7 @@ public class Upgrades extends AppCompatActivity {
         buy[4] = findViewById(R.id.ug4buy);
         init();
         funds = findViewById(R.id.ugFunds);
-        funds.setText(Integer.toString((int) coins)+" \u20BF");
+        funds.setText(formatVal(coins));
     }
 
     public Upgrades() {
@@ -72,12 +74,16 @@ public class Upgrades extends AppCompatActivity {
         for (int i=0; i < upgrade.length;) {
             String ugText = "Owned: "+upgrade[i];
             i++;
-            String buyText = Integer.toString((int)price[i])+" \u20BF";
             ug[i].setText(ugText);
-            buy[i].setText(buyText);
+            buy[i].setText(formatVal(price[i]));
         }
         ug[0].setText("Current: "+power);
-        buy[0].setText(Integer.toString((int)price[0])+" \u20BF");
+        buy[0].setText(formatVal(price[0]));
+    }
+
+    private String formatVal(double value) {
+        DecimalFormat formatter = new DecimalFormat(",###");
+        return formatter.format(value)+ " \u20BF";
     }
 
     public double cycle() {
@@ -117,10 +123,9 @@ public class Upgrades extends AppCompatActivity {
             price[item] *= (item == 0) ? 1.75 : 1.5;
         }
         String ugText = (item == 0) ? "Current: "+power : "Owned: "+upgrade[item-1];
-        String buyText = Integer.toString((int)price[item])+" \u20BF";
         ug[item].setText(ugText);
-        buy[item].setText(buyText);
-        funds.setText(Integer.toString((int) coins)+" \u20BF");
+        buy[item].setText(formatVal(price[item]));
+        funds.setText(formatVal(coins));
     }
 
    public int getPower() {

@@ -11,17 +11,18 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.content.Intent;
+import java.util.Arrays;
 
 public class Achievements extends AppCompatActivity {
 
     //A double that should represent the percentage to be added to the total gains
-    public double achMultiplier = 0;
+    static double achMultiplier = 0;
     int coins = 0;
     ProgressBar bar[] = new ProgressBar[8];
-    int barLevel[] = new int[] {10,100,1000,10000,100000,1000000,1000000000};
+    long barLevel[] = new long[] {10,100,1000,10000,100000,1000000,1000000000,1000000000000L};
     double multipliers[] = new double[] {0.05,0.05,0.1,0.1,0.1,0.1,0.2,0.2};
     Button btn[] = new Button[8];
-    Boolean clicked[] = new Boolean[8];
+    static Boolean clicked[] = new Boolean[8];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,8 @@ public class Achievements extends AppCompatActivity {
         backgroundimage.startAnimation(backgroundrotate);
         coins = (int)getIntent().getDoubleExtra("coins", 0);
 
+        if (clicked[0] == null) Arrays.fill(clicked, false);
+
         bar[0] = findViewById(R.id.progressBar);
         bar[1] = findViewById(R.id.progressBar2);
         bar[2] = findViewById(R.id.progressBar3);
@@ -41,11 +44,6 @@ public class Achievements extends AppCompatActivity {
         bar[6] = findViewById(R.id.progressBar7);
         bar[7] = findViewById(R.id.progressBar8);
 
-        for(int i=0; i < bar.length; i++) {
-            bar[i].setMax(barLevel[i]);
-            bar[i].setProgress(coins);
-        }
-
         btn[0] = findViewById(R.id.button);
         btn[1] = findViewById(R.id.button2);
         btn[2] = findViewById(R.id.button3);
@@ -54,6 +52,20 @@ public class Achievements extends AppCompatActivity {
         btn[5] = findViewById(R.id.button6);
         btn[6] = findViewById(R.id.button7);
         btn[7] = findViewById(R.id.button8);
+
+        for(int i=0; i < bar.length; i++) {
+            long pMax = barLevel[i];
+            long pVal = coins;
+            if (barLevel[i] > 2000000000) {
+                pMax = barLevel[i] / 10000000;
+                pVal = coins / 10000000;
+            }
+            bar[i].setMax((int) pMax);
+            bar[i].setProgress((int) pVal);
+            if (clicked[i]) {
+                btn[i].setEnabled(false);
+            }
+        }
 
         //public int getCurrency() {
             //SQLiteDatabase database = db.getReadableDatabase();
@@ -205,7 +217,7 @@ public class Achievements extends AppCompatActivity {
      * for the progress bars.
      */
 
-    /**final Button button8 = findViewById(R.id.button9);
+    /*final Button button8 = findViewById(R.id.button9);
         button.setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
             eight.checkCount();
@@ -216,6 +228,6 @@ public class Achievements extends AppCompatActivity {
 
         }
     });
-     **/
+     */
 }
 

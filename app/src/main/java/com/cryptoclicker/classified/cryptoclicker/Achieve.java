@@ -88,4 +88,7 @@ public class Achieve extends MainActivity {
     public double testGrab() {
         return getScore();
     }
+
+    public void checkCount() {
+    }
 }

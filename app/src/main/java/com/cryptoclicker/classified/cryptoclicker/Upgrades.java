@@ -14,10 +14,10 @@ public class Upgrades extends AppCompatActivity {
 
     private static int upgrade[] = new int[] {0,0,0,0}; // usb stick, mining rig, server rack, supercomputer
     private static double gain[] = new double[] {0.01, 0.1, 1, 10};
-    private static double price[] = new double[] {100, 250, 1000, 2500};
+    private static double price[] = new double[] {100, 250, 1000, 2500, 75};
     private static int power = 1;
-    private static TextView ug[] = new TextView[4];
-    private static Button buy[] = new Button[4];
+    private static TextView ug[] = new TextView[5];
+    private static Button buy[] = new Button[5];
     private static TextView funds;
 
     private double coins;
@@ -39,14 +39,16 @@ public class Upgrades extends AppCompatActivity {
         imageView3.startAnimation(pulse);
         imageView4.startAnimation(pulse);
         coins = getIntent().getDoubleExtra("coins",0);
-        ug[0] = findViewById(R.id.ug0);
+        ug[0] = findViewById(R.id.ugP);
         ug[1] = findViewById(R.id.ug1);
         ug[2] = findViewById(R.id.ug2);
         ug[3] = findViewById(R.id.ug3);
-        buy[0] = findViewById(R.id.ug0buy);
+        ug[4] = findViewById(R.id.ug4);
+        buy[0] = findViewById(R.id.ugPbuy);
         buy[1] = findViewById(R.id.ug1buy);
         buy[2] = findViewById(R.id.ug2buy);
         buy[3] = findViewById(R.id.ug3buy);
+        buy[4] = findViewById(R.id.ug4buy);
         init();
         funds = findViewById(R.id.ugFunds);
         funds.setText(Integer.toString((int) coins)+" \u20BF");
@@ -57,20 +59,27 @@ public class Upgrades extends AppCompatActivity {
 
     public Upgrades(int items[], int pLevel) {
         for (int i=0; i < items.length; i++) {
-            price[i] *= items[i] * 1.3;
+            price[i+1] *= items[i] * 1.3;
             upgrade[i] = items[i];
         }
-        power = (pLevel > 1) ? pLevel : 1;
+        if (pLevel > 1) {
+            power = pLevel;
+            price[0] *= (power-1) * 1.7;
+        }
     }
 
     private void init() {
-        for (int i=0; i < upgrade.length; i++) {
+        for (int i=0; i < upgrade.length;) {
             String ugText = "Owned: "+upgrade[i];
+            i++;
             String buyText = Integer.toString((int)price[i])+" \u20BF";
             ug[i].setText(ugText);
             buy[i].setText(buyText);
         }
+        ug[0].setText("Current: "+power);
+        buy[0].setText(Integer.toString((int)price[0])+" \u20BF");
     }
+
     public double cycle() {
         double coins = 0.0;
         for (int i=0; i < upgrade.length; i++) {
@@ -82,7 +91,7 @@ public class Upgrades extends AppCompatActivity {
     public void buyUpgrade(View view) {
         int item = 0;
         switch (view.getId()) {
-            case R.id.ug0buy:
+            case R.id.ugPbuy:
                 item = 0;
                 break;
             case R.id.ug1buy:
@@ -94,23 +103,35 @@ public class Upgrades extends AppCompatActivity {
             case R.id.ug3buy:
                 item = 3;
                 break;
+            case R.id.ug4buy:
+                item = 4;
+                break;
         }
         if (coins - price[item] > 0) {
             coins -= price[item];
-            upgrade[item]++;
-            price[item] *= 1.3;
+            if (item == 0) {
+                power++;
+            } else {
+                upgrade[item - 1]++;
+            }
+            price[item] *= (item == 0) ? 1.7 : 1.3;
         }
-        String ugText = "Owned: "+upgrade[item];
+        String ugText = (item == 0) ? "Current: "+power : "Owned: "+upgrade[item-1];
         String buyText = Integer.toString((int)price[item])+" \u20BF";
         ug[item].setText(ugText);
         buy[item].setText(buyText);
         funds.setText(Integer.toString((int) coins)+" \u20BF");
     }
 
+   public int getPower() {
+        return power;
+    }
+
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();
         intent.putExtra("coins", coins);
+        intent.putExtra("power", power);
         setResult(RESULT_OK, intent);
         finish();
     }

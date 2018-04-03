@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     long tInterval = 500;
     Upgrades upgrades = new Upgrades();
     public int rand;
-    double achM = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,13 +88,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void Achievements(){
         Ach =  findViewById(R.id.achi);
-
-
         Ach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent why1 = new Intent(MainActivity.this, Achievements.class);
-                why1.putExtra("coins", counter);
                 startActivity(why1);
             }
         });
@@ -213,14 +209,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-    /**
-    public void onActivityResult(int requestCode, int resultCode, Intent data2) {
-        super.onActivityResult(requestCode, resultCode, data2);
-        if (requestCode == 1) {
-            if (resultCode == RESULT_OK) {
-                achM = data2.getDoubleExtra("multiplier", achM);
-            }
-        }
-    }
-     **/
 }

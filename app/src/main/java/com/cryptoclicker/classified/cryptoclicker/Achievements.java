@@ -16,6 +16,17 @@ public class Achievements extends AppCompatActivity {
     //A double that should represent the percentage to be added to the total gains
     public double achMultiplier = 0;
 
+    final ProgressBar progressBar = (ProgressBar)findViewById(R.id.progressBar);
+    //progressBar.setProgress();
+
+    final ProgressBar progressBar2 = (ProgressBar)findViewById(R.id.progressBar2);
+    final ProgressBar progressBar3 = (ProgressBar)findViewById(R.id.progressBar3);
+    final ProgressBar progressBar4 = (ProgressBar)findViewById(R.id.progressBar4);
+    final ProgressBar progressBar5 = (ProgressBar)findViewById(R.id.progressBar5);
+    final ProgressBar progressBar6 = (ProgressBar)findViewById(R.id.progressBar6);
+    final ProgressBar progressBar7 = (ProgressBar)findViewById(R.id.progressBar7);
+    final ProgressBar progressBar8 = (ProgressBar)findViewById(R.id.progressBar8);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,16 +36,7 @@ public class Achievements extends AppCompatActivity {
         Animation backgroundrotate = AnimationUtils.loadAnimation(this, R.anim.rotate);
         backgroundimage.startAnimation(backgroundrotate);
 
-        final ProgressBar progressBar = (ProgressBar)findViewById(R.id.progressBar);
-        //progressBar.setProgress();
 
-        final ProgressBar progressBar2 = (ProgressBar)findViewById(R.id.progressBar2);
-        final ProgressBar progressBar3 = (ProgressBar)findViewById(R.id.progressBar3);
-        final ProgressBar progressBar4 = (ProgressBar)findViewById(R.id.progressBar4);
-        final ProgressBar progressBar5 = (ProgressBar)findViewById(R.id.progressBar5);
-        final ProgressBar progressBar6 = (ProgressBar)findViewById(R.id.progressBar6);
-        final ProgressBar progressBar7 = (ProgressBar)findViewById(R.id.progressBar7);
-        final ProgressBar progressBar8 = (ProgressBar)findViewById(R.id.progressBar8);
 
         //public int getCurrency() {
             //SQLiteDatabase database = db.getReadableDatabase();
@@ -150,13 +152,13 @@ public class Achievements extends AppCompatActivity {
     }
 
 
-    /**
+    /*
      * The following are the commands when any button on the achievements page is pressed, I planned
      * to add something for the progress bars, but I don't know how to continually update the information
      * for the progress bars.
      */
 
-    /**final Button button8 = findViewById(R.id.button9);
+    /*final Button button8 = findViewById(R.id.button9);
         button.setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
             eight.checkCount();
@@ -167,6 +169,6 @@ public class Achievements extends AppCompatActivity {
 
         }
     });
-     **/
+     */
 }
 

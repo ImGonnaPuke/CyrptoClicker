@@ -7,6 +7,7 @@
     android:background="@color/splashscreen"
     tools:context="com.cryptoclicker.classified.cryptoclicker.MainActivity">
 
+
     <ImageView
         android:id="@+id/background"
         android:layout_width="1000dp"
@@ -42,14 +43,13 @@
         android:id="@+id/upgrades"
         android:layout_width="145dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
         android:fontFamily="@font/rubik"
         android:onClick="uGrades"
         android:text="Upgrades"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.964" />
+        app:layout_constraintVertical_bias="0.969" />
 
     <Button
         android:id="@+id/achi"
@@ -60,10 +60,10 @@
         android:text="Achievements"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/upgrades"
-        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintHorizontal_bias="0.01"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.965" />
+        app:layout_constraintVertical_bias="0.969" />
 
     <Button
         android:id="@+id/magic"
@@ -126,6 +126,56 @@
         app:layout_constraintHorizontal_bias="0.574"
         app:layout_constraintStart_toEndOf="@+id/magic"
         app:layout_constraintTop_toBottomOf="@+id/magic"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/deBug"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="deb"
+        android:text="debug"
+        app:layout_constraintBottom_toTopOf="@+id/magic"
+        app:layout_constraintEnd_toStartOf="@+id/magic"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Counter"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/newGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="New Game"
+        app:layout_constraintBottom_toTopOf="@+id/background"
+        app:layout_constraintEnd_toStartOf="@+id/upgrades"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/achi"
+        app:layout_constraintTop_toBottomOf="@+id/upgrades"
+        app:layout_constraintVertical_bias="0.042" />
+
+    <TextView
+        android:id="@+id/cPoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cool Points: "
+        android:textSize="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/magic"
+        app:layout_constraintEnd_toStartOf="@+id/magic"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/magic"
+        app:layout_constraintTop_toBottomOf="@+id/Counter" />
+
+    <Button
+        android:id="@+id/event2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="other"
+        app:layout_constraintBottom_toTopOf="@+id/magic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/Counter"
+        app:layout_constraintTop_toBottomOf="@+id/Counter"
         app:layout_constraintVertical_bias="0.0" />
 
 

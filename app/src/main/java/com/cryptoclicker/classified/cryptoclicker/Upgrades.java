@@ -127,6 +127,10 @@ public class Upgrades extends AppCompatActivity {
         return power;
     }
 
+    public void button4(View view){
+        coins+=coins+10000;
+    }
+
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();

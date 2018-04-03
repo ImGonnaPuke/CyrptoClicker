@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.TextView;
@@ -22,13 +23,23 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     TextView showValue;
+    TextView coolPoints;
     DatabaseHandler db = new DatabaseHandler (this);
     SQLiteDatabase database;
     double counter = 0;
     int pwrClick = 1;
+
+    //points given if New Game+ is activated
+    int ngPoints=0;
+    int countdown=0;
+
+    int miniClick=0;
+
     public Button Up;
     long tInterval = 500;
     Upgrades upgrades = new Upgrades();;
+
+
     public int rand;
 
     @Override
@@ -44,12 +55,25 @@ public class MainActivity extends AppCompatActivity {
         loadGame();
         Show();
         Hide();
+        Hide2();
+        newGame1();
+
+       // newGame.setVisibility(View.INVISIBLE);
         hide1.setVisibility(View.INVISIBLE);
+        hide2.setVisibility(View.INVISIBLE);
         showValue = findViewById(R.id.Counter);
+
+        coolPoints = findViewById(R.id.cPoints);
+        coolPoints.setVisibility(View.INVISIBLE);
+
         handler.postDelayed(runnable, tInterval);
 
        pwrClick = upgrades.getPower();
+
+
     }
+
+
 
     public Button savegame;
 
@@ -84,11 +108,44 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(why, 1);
     }
 
-    public Button Ach;
+
 
     public void Achievements(View view){
         Intent why1 = new Intent(MainActivity.this, Achievements.class);
         startActivity(why1);
+    }
+
+    public void deb(View view){
+        counter+=10000;
+    }
+
+
+
+    public Button newGame;
+    public void newGame1(){
+        newGame =  findViewById(R.id.newGame);
+        newGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {  coolPoints.setVisibility(View.VISIBLE);
+
+
+                if(counter>0 && counter%10000==0){
+                    ngPoints+=1;
+                    counter-=10000;
+                    Toast.makeText(getApplicationContext(),"New Game Plus point added!", Toast.LENGTH_SHORT).show();
+                }
+
+                else{
+                    Toast.makeText(getApplicationContext(),"Not enough coins!", Toast.LENGTH_SHORT).show();
+                }
+                if(ngPoints==1){
+                coolPoints.setText(Integer.toString((int) ngPoints) + " Cool Point!");}
+                else{
+                    coolPoints.setText(Integer.toString((int) ngPoints) + " Cool Points!");
+                }
+
+            }
+        });
     }
 
 
@@ -141,6 +198,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public Button hide2;
+    public void Hide2(){
+        hide2 =  findViewById(R.id.event2);
+        hide2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               countdown=1;
+            }
+        });
+    }
         /*
         Button main1 =  findViewById(R.id.magic);
 
@@ -156,12 +223,29 @@ public class MainActivity extends AppCompatActivity {
         */
 
     public void test(View view){
-        counter += pwrClick;
-        playSound();
-        showValue.setText(Integer.toString((int) counter)+ " BTC");
+        if(countdown==1){
+
+            counter+=counter;
+            if(miniClick>=10){
+                countdown=0;
+
+            }
+            else{
+                miniClick+=1;
+            }
+
+        }else {
+            counter += pwrClick;
+        }
+
+            playSound();
+            showValue.setText(Integer.toString((int) counter) + " BTC");
 
        if(random()==0){
             hide1.setVisibility(View.VISIBLE);
+        }
+        if(random()==10){
+           hide2.setVisibility(View.VISIBLE);
         }
     }
 
@@ -197,10 +281,21 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if(resultCode == RESULT_OK) {
+
+
                 counter = data.getDoubleExtra("coins", counter);
+
                 pwrClick = data.getIntExtra("power", pwrClick);
                 showValue.setText(Integer.toString((int) counter)+ " BTC");
+
+
+
+
             }
         }
     }
+
+
+
+
 }

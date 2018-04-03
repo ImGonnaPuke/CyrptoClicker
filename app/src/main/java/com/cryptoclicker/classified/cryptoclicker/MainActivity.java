@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
         */
 
     public void test(View view){
-        counter += pwrClick;
+        counter += pwrClick * (1 + achMultiplier);
         playSound();
         showValue.setText(Integer.toString((int) counter)+ " BTC");
 

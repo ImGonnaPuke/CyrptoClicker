@@ -13,8 +13,8 @@ import android.widget.Button;
 public class Upgrades extends AppCompatActivity {
 
     private static int upgrade[] = new int[] {0,0,0,0}; // usb stick, mining rig, server rack, supercomputer
-    private static double gain[] = new double[] {0.01, 0.1, 1, 10};
-    private static double price[] = new double[] {100, 250, 1000, 2500, 75};
+    private static double gain[] = new double[] {0.03125, 0.25, 2, 16};
+    private static double price[] = new double[] {32, 65, 500, 4000, 32000};
     private static int power = 1;
     private static TextView ug[] = new TextView[5];
     private static Button buy[] = new Button[5];
@@ -59,12 +59,12 @@ public class Upgrades extends AppCompatActivity {
 
     public Upgrades(int items[], int pLevel) {
         for (int i=0; i < items.length; i++) {
-            price[i+1] *= items[i] * 1.3;
+            price[i+1] *= items[i] * 1.5;
             upgrade[i] = items[i];
         }
         if (pLevel > 1) {
             power = pLevel;
-            price[0] *= (power-1) * 1.7;
+            price[0] *= (power-1) * 1.75;
         }
     }
 
@@ -114,7 +114,7 @@ public class Upgrades extends AppCompatActivity {
             } else {
                 upgrade[item - 1]++;
             }
-            price[item] *= (item == 0) ? 1.7 : 1.3;
+            price[item] *= (item == 0) ? 1.75 : 1.5;
         }
         String ugText = (item == 0) ? "Current: "+power : "Owned: "+upgrade[item-1];
         String buyText = Integer.toString((int)price[item])+" \u20BF";

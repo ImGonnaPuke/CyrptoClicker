@@ -17,6 +17,11 @@ public class Achievements extends AppCompatActivity {
     //A double that should represent the percentage to be added to the total gains
     public double achMultiplier = 0;
     int coins = 0;
+    ProgressBar bar[] = new ProgressBar[8];
+    int barLevel[] = new int[] {10,100,1000,10000,100000,1000000,1000000000};
+    double multipliers[] = new double[] {0.05,0.05,0.1,0.1,0.1,0.1,0.2,0.2};
+    Button btn[] = new Button[8];
+    Boolean clicked[] = new Boolean[8];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,29 +32,28 @@ public class Achievements extends AppCompatActivity {
         backgroundimage.startAnimation(backgroundrotate);
         coins = (int)getIntent().getDoubleExtra("coins", 0);
 
-        final ProgressBar progressBar = (ProgressBar)findViewById(R.id.progressBar);
-        progressBar.setProgress(coins);
+        bar[0] = findViewById(R.id.progressBar);
+        bar[1] = findViewById(R.id.progressBar2);
+        bar[2] = findViewById(R.id.progressBar3);
+        bar[3] = findViewById(R.id.progressBar4);
+        bar[4] = findViewById(R.id.progressBar5);
+        bar[5] = findViewById(R.id.progressBar6);
+        bar[6] = findViewById(R.id.progressBar7);
+        bar[7] = findViewById(R.id.progressBar8);
 
-        final ProgressBar progressBar2 = (ProgressBar)findViewById(R.id.progressBar2);
-        progressBar2.setProgress(coins);
+        for(int i=0; i < bar.length; i++) {
+            bar[i].setMax(barLevel[i]);
+            bar[i].setProgress(coins);
+        }
 
-        final ProgressBar progressBar3 = (ProgressBar)findViewById(R.id.progressBar3);
-        progressBar3.setProgress(coins);
-
-        final ProgressBar progressBar4 = (ProgressBar)findViewById(R.id.progressBar4);
-        progressBar4.setProgress(coins);
-
-        final ProgressBar progressBar5 = (ProgressBar)findViewById(R.id.progressBar5);
-        progressBar5.setProgress(coins);
-
-        final ProgressBar progressBar6 = (ProgressBar)findViewById(R.id.progressBar6);
-        progressBar6.setProgress(coins);
-
-        final ProgressBar progressBar7 = (ProgressBar)findViewById(R.id.progressBar7);
-        progressBar7.setProgress(coins);
-
-        final ProgressBar progressBar8 = (ProgressBar)findViewById(R.id.progressBar8);
-        progressBar8.setProgress(coins);
+        btn[0] = findViewById(R.id.button);
+        btn[1] = findViewById(R.id.button2);
+        btn[2] = findViewById(R.id.button3);
+        btn[3] = findViewById(R.id.button4);
+        btn[4] = findViewById(R.id.button5);
+        btn[5] = findViewById(R.id.button6);
+        btn[6] = findViewById(R.id.button7);
+        btn[7] = findViewById(R.id.button8);
 
         //public int getCurrency() {
             //SQLiteDatabase database = db.getReadableDatabase();
@@ -60,15 +64,22 @@ public class Achievements extends AppCompatActivity {
         //}
 
         //Test Achievements
-        final Achieve one = new Achieve(10);
+/*        final Achieve one = new Achieve(10);
         final Achieve two = new Achieve(100);
         final Achieve three = new Achieve(1000);
         final Achieve four = new Achieve(10000);
         final Achieve five = new Achieve(100000);
         final Achieve six = new Achieve(1000000);
-        final Achieve seven = new Achieve(1000000000);
+        final Achieve seven = new Achieve(1000000000);*/
         //Achieve eight = new Achieve(1 trillion); number too large
+        for (int i=0; i<btn.length; i++){
+            btn[i].setEnabled(false);
+            if (coins >= barLevel[i] && !clicked[i]) {
+                btn[i].setEnabled(true);
+            }
+        }
 
+        /*
 
         final Button button = findViewById(R.id.button2);
         button.setOnClickListener(new View.OnClickListener() {
@@ -169,8 +180,14 @@ public class Achievements extends AppCompatActivity {
         });
 
 
+*/
 
+    }
 
+    public void btn0clk(View view) {
+        achMultiplier += multipliers[0];
+        clicked[0] = true;
+        btn[0].setEnabled(false);
     }
 
     @Override

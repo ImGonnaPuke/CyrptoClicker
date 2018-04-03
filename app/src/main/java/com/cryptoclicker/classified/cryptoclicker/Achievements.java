@@ -10,12 +10,13 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.content.Intent;
 
 public class Achievements extends AppCompatActivity {
 
     //A double that should represent the percentage to be added to the total gains
     public double achMultiplier = 0;
-
+    int coins = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,17 +25,31 @@ public class Achievements extends AppCompatActivity {
         ImageView backgroundimage = (ImageView) findViewById(R.id.background2);
         Animation backgroundrotate = AnimationUtils.loadAnimation(this, R.anim.rotate);
         backgroundimage.startAnimation(backgroundrotate);
+        coins = (int)getIntent().getDoubleExtra("coins", 0);
 
         final ProgressBar progressBar = (ProgressBar)findViewById(R.id.progressBar);
-        //progressBar.setProgress();
+        progressBar.setProgress(coins);
 
         final ProgressBar progressBar2 = (ProgressBar)findViewById(R.id.progressBar2);
+        progressBar2.setProgress(coins);
+
         final ProgressBar progressBar3 = (ProgressBar)findViewById(R.id.progressBar3);
+        progressBar3.setProgress(coins);
+
         final ProgressBar progressBar4 = (ProgressBar)findViewById(R.id.progressBar4);
+        progressBar4.setProgress(coins);
+
         final ProgressBar progressBar5 = (ProgressBar)findViewById(R.id.progressBar5);
+        progressBar5.setProgress(coins);
+
         final ProgressBar progressBar6 = (ProgressBar)findViewById(R.id.progressBar6);
+        progressBar6.setProgress(coins);
+
         final ProgressBar progressBar7 = (ProgressBar)findViewById(R.id.progressBar7);
+        progressBar7.setProgress(coins);
+
         final ProgressBar progressBar8 = (ProgressBar)findViewById(R.id.progressBar8);
+        progressBar8.setProgress(coins);
 
         //public int getCurrency() {
             //SQLiteDatabase database = db.getReadableDatabase();
@@ -58,9 +73,8 @@ public class Achievements extends AppCompatActivity {
         final Button button = findViewById(R.id.button2);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //one.checkCount();
 
-                if (one.getCurrency() > one.getUnlockCount()) {
+                if (coins > one.getUnlockCount()) {
                     one.unlocked();
                 }
                 if (one.getUn()) {
@@ -74,20 +88,20 @@ public class Achievements extends AppCompatActivity {
         final Button button2 = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //two.checkCount();
+                if (coins > two.getUnlockCount()) {
+                    two.unlocked();
+                }
                 if (two.getUn()) {
                     achMultiplier += .05;
                     button2.setEnabled(false);
                 }
-
             }
         });
 
         final Button button3 = findViewById(R.id.button3);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //three.checkCount();
-                if (three.testGrab() > three.getUnlockCount()) {
+                if (coins > three.getUnlockCount()) {
                     three.unlocked();
                 }
                 if (three.getUn()) {
@@ -101,7 +115,9 @@ public class Achievements extends AppCompatActivity {
         final Button button4 = findViewById(R.id.button5);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //four.checkCount();
+                if (coins > four.getUnlockCount()) {
+                    four.unlocked();
+                }
                 if (four.getUn()) {
                     achMultiplier += .1;
                     button4.setEnabled(false);
@@ -113,7 +129,9 @@ public class Achievements extends AppCompatActivity {
         final Button button5 = findViewById(R.id.button6);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //five.checkCount();
+                if (coins > five.getUnlockCount()) {
+                    five.unlocked();
+                }
                 if (five.getUn()) {
                     achMultiplier += .1;
                     button5.setEnabled(false);
@@ -125,7 +143,9 @@ public class Achievements extends AppCompatActivity {
         final Button button6 = findViewById(R.id.button7);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //six.checkCount();
+                if (coins > six.getUnlockCount()) {
+                    six.unlocked();
+                }
                 if (six.getUn()) {
                     achMultiplier += .1;
                     button6.setEnabled(false);
@@ -137,7 +157,9 @@ public class Achievements extends AppCompatActivity {
         final Button button7 = findViewById(R.id.button8);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //seven.checkCount();
+                if (coins > seven.getUnlockCount()) {
+                    seven.unlocked();
+                }
                 if (seven.getUn()) {
                     achMultiplier += .2;
                     button7.setEnabled(false);
@@ -147,6 +169,16 @@ public class Achievements extends AppCompatActivity {
         });
 
 
+
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.putExtra("achMultiplier", achMultiplier);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
 

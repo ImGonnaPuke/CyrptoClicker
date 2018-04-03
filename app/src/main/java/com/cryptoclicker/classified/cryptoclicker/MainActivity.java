@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     long tInterval = 500;
     Upgrades upgrades = new Upgrades();;
     public int rand;
+    double achMultiplier;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +89,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void Achievements(View view){
         Intent why1 = new Intent(MainActivity.this, Achievements.class);
-        startActivity(why1);
+        why1.putExtra("coins", counter);
+        startActivityForResult(why1, 2);
     }
 
 
@@ -200,6 +202,12 @@ public class MainActivity extends AppCompatActivity {
                 counter = data.getDoubleExtra("coins", counter);
                 pwrClick = data.getIntExtra("power", pwrClick);
                 showValue.setText(Integer.toString((int) counter)+ " BTC");
+            }
+
+        }
+        if (requestCode == 2) {
+            if(resultCode == RESULT_OK) {
+                achMultiplier = data.getDoubleExtra("achMultiplier", achMultiplier);
             }
         }
     }

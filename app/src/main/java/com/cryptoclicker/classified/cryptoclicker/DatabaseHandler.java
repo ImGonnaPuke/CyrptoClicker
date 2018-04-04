@@ -20,7 +20,7 @@ public class DatabaseHandler extends SQLiteOpenHelper
         //create table to insert data
         String query;
         String query1;
-        query = "CREATE TABLE " +TABLE_NAME+ " ("+CURRENCY_COLUMN+ " INTEGER DEFAULT 0);";
+        query = "CREATE TABLE " +TABLE_NAME+ " ("+CURRENCY_COLUMN+ " LONG DEFAULT 0);";
         db.execSQL(query);
         query1 = "INSERT INTO data (currency)"+
                 "VALUES (0);";

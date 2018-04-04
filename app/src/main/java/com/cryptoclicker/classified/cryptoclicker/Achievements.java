@@ -17,7 +17,7 @@ public class Achievements extends AppCompatActivity {
 
     //A double that should represent the percentage to be added to the total gains
     static double achMultiplier = 0;
-    int coins = 0;
+    long coins = 0;
     ProgressBar bar[] = new ProgressBar[8];
     long barLevel[] = new long[] {10,100,1000,10000,100000,1000000,1000000000,1000000000000L};
     double multipliers[] = new double[] {0.05,0.05,0.1,0.1,0.1,0.1,0.2,0.2};
@@ -31,7 +31,7 @@ public class Achievements extends AppCompatActivity {
         ImageView backgroundimage = (ImageView) findViewById(R.id.background2);
         Animation backgroundrotate = AnimationUtils.loadAnimation(this, R.anim.rotate);
         backgroundimage.startAnimation(backgroundrotate);
-        coins = (int)getIntent().getDoubleExtra("coins", 0);
+        coins = (long)getIntent().getDoubleExtra("coins", 0);
 
         if (clicked[0] == null) Arrays.fill(clicked, false);
 
@@ -61,6 +61,7 @@ public class Achievements extends AppCompatActivity {
                 pVal = coins / 10000000;
             }
             bar[i].setMax((int) pMax);
+            if (pVal > pMax) pVal = pMax;
             bar[i].setProgress((int) pVal);
             if (clicked[i]) {
                 btn[i].setEnabled(false);
@@ -75,125 +76,12 @@ public class Achievements extends AppCompatActivity {
             //return currency;
         //}
 
-        //Test Achievements
-/*        final Achieve one = new Achieve(10);
-        final Achieve two = new Achieve(100);
-        final Achieve three = new Achieve(1000);
-        final Achieve four = new Achieve(10000);
-        final Achieve five = new Achieve(100000);
-        final Achieve six = new Achieve(1000000);
-        final Achieve seven = new Achieve(1000000000);*/
-        //Achieve eight = new Achieve(1 trillion); number too large
         for (int i=0; i<btn.length; i++){
             btn[i].setEnabled(false);
             if (coins >= barLevel[i] && !clicked[i]) {
                 btn[i].setEnabled(true);
             }
         }
-
-        /*
-
-        final Button button = findViewById(R.id.button2);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-                if (coins > one.getUnlockCount()) {
-                    one.unlocked();
-                }
-                if (one.getUn()) {
-                    achMultiplier += .05;
-                    button.setEnabled(false);
-                }
-
-            }
-        });
-
-        final Button button2 = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (coins > two.getUnlockCount()) {
-                    two.unlocked();
-                }
-                if (two.getUn()) {
-                    achMultiplier += .05;
-                    button2.setEnabled(false);
-                }
-            }
-        });
-
-        final Button button3 = findViewById(R.id.button3);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (coins > three.getUnlockCount()) {
-                    three.unlocked();
-                }
-                if (three.getUn()) {
-                    achMultiplier += .1;
-                    button3.setEnabled(false);
-                }
-
-            }
-        });
-
-        final Button button4 = findViewById(R.id.button5);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (coins > four.getUnlockCount()) {
-                    four.unlocked();
-                }
-                if (four.getUn()) {
-                    achMultiplier += .1;
-                    button4.setEnabled(false);
-                }
-
-            }
-        });
-
-        final Button button5 = findViewById(R.id.button6);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (coins > five.getUnlockCount()) {
-                    five.unlocked();
-                }
-                if (five.getUn()) {
-                    achMultiplier += .1;
-                    button5.setEnabled(false);
-                }
-
-            }
-        });
-
-        final Button button6 = findViewById(R.id.button7);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (coins > six.getUnlockCount()) {
-                    six.unlocked();
-                }
-                if (six.getUn()) {
-                    achMultiplier += .1;
-                    button6.setEnabled(false);
-                }
-
-            }
-        });
-
-        final Button button7 = findViewById(R.id.button8);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (coins > seven.getUnlockCount()) {
-                    seven.unlocked();
-                }
-                if (seven.getUn()) {
-                    achMultiplier += .2;
-                    button7.setEnabled(false);
-                }
-
-            }
-        });
-
-
-*/
-
     }
 
     public void btn0clk(View view) {
@@ -203,39 +91,45 @@ public class Achievements extends AppCompatActivity {
     }
 
     public void btn2clk(View view) {
-        achMultiplier += multipliers[0];
-        clicked[0] = true;
-        btn[0].setEnabled(false);
+        achMultiplier += multipliers[1];
+        clicked[1] = true;
+        btn[1].setEnabled(false);
     }
 
     public void btn3clk(View view) {
-        achMultiplier += multipliers[0];
-        clicked[0] = true;
-        btn[0].setEnabled(false);
+        achMultiplier += multipliers[2];
+        clicked[2] = true;
+        btn[2].setEnabled(false);
     }
 
     public void btn4clk(View view) {
-        achMultiplier += multipliers[0];
-        clicked[0] = true;
-        btn[0].setEnabled(false);
+        achMultiplier += multipliers[3];
+        clicked[3] = true;
+        btn[3].setEnabled(false);
     }
 
     public void btn5clk(View view) {
-        achMultiplier += multipliers[0];
-        clicked[0] = true;
-        btn[0].setEnabled(false);
+        achMultiplier += multipliers[4];
+        clicked[4] = true;
+        btn[4].setEnabled(false);
     }
 
     public void btn6clk(View view) {
-        achMultiplier += multipliers[0];
-        clicked[0] = true;
-        btn[0].setEnabled(false);
+        achMultiplier += multipliers[5];
+        clicked[5] = true;
+        btn[5].setEnabled(false);
     }
 
     public void btn7clk(View view) {
-        achMultiplier += multipliers[0];
-        clicked[0] = true;
-        btn[0].setEnabled(false);
+        achMultiplier += multipliers[6];
+        clicked[6] = true;
+        btn[6].setEnabled(false);
+    }
+
+    public void btn8clk(View view) {
+        achMultiplier += multipliers[7];
+        clicked[7] = true;
+        btn[7].setEnabled(false);
     }
 
     @Override
@@ -245,25 +139,5 @@ public class Achievements extends AppCompatActivity {
         setResult(RESULT_OK, intent);
         finish();
     }
-
-
-    /**
-     * The following are the commands when any button on the achievements page is pressed, I planned
-     * to add something for the progress bars, but I don't know how to continually update the information
-     * for the progress bars.
-     */
-
-    /*final Button button8 = findViewById(R.id.button9);
-        button.setOnClickListener(new View.OnClickListener() {
-        public void onClick(View v) {
-            eight.checkCount();
-            if (eight.getUn()) {
-                achMultiplier += .2;
-                button8.setEnabled(false);
-            }
-
-        }
-    });
-     */
 }
 

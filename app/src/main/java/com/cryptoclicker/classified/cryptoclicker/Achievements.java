@@ -190,6 +190,42 @@ public class Achievements extends AppCompatActivity {
         btn[0].setEnabled(false);
     }
 
+    public void btn2clk(View view) {
+        achMultiplier += multipliers[0];
+        clicked[0] = true;
+        btn[0].setEnabled(false);
+    }
+
+    public void btn3clk(View view) {
+        achMultiplier += multipliers[0];
+        clicked[0] = true;
+        btn[0].setEnabled(false);
+    }
+
+    public void btn4clk(View view) {
+        achMultiplier += multipliers[0];
+        clicked[0] = true;
+        btn[0].setEnabled(false);
+    }
+
+    public void btn5clk(View view) {
+        achMultiplier += multipliers[0];
+        clicked[0] = true;
+        btn[0].setEnabled(false);
+    }
+
+    public void btn6clk(View view) {
+        achMultiplier += multipliers[0];
+        clicked[0] = true;
+        btn[0].setEnabled(false);
+    }
+
+    public void btn7clk(View view) {
+        achMultiplier += multipliers[0];
+        clicked[0] = true;
+        btn[0].setEnabled(false);
+    }
+
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();

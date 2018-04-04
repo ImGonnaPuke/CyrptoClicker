@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/background2"
         android:layout_width="1000dp"
-        android:layout_height="1000dp"
+        android:layout_height="999dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -67,7 +67,8 @@
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:max="10" />
                 </LinearLayout>
 
                 <Button
@@ -108,7 +109,8 @@
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:max="100" />
                 </LinearLayout>
 
                 <Button
@@ -117,6 +119,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="@color/splashscreen"
+                    android:onClick="btn2clk"
                     android:text="Collect (+5%)" />
 
             </LinearLayout>
@@ -145,7 +148,8 @@
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:max="1000" />
                 </LinearLayout>
 
                 <Button
@@ -154,6 +158,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="@color/splashscreen"
+                    android:onClick="btn3clk"
                     android:text="Collect (+10%)"
                     android:visibility="visible" />
             </LinearLayout>
@@ -182,7 +187,8 @@
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:max="10000" />
                 </LinearLayout>
 
                 <Button
@@ -191,6 +197,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="@color/splashscreen"
+                    android:onClick="btn4clk"
                     android:text="Collect (+10%)"
                     android:visibility="visible" />
             </LinearLayout>
@@ -219,7 +226,8 @@
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:max="100000" />
                 </LinearLayout>
 
                 <Button
@@ -228,6 +236,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="@color/splashscreen"
+                    android:onClick="btn5clk"
                     android:text="Collect (+10%)"
                     android:visibility="visible" />
             </LinearLayout>
@@ -256,7 +265,8 @@
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:max="1000000" />
                 </LinearLayout>
 
                 <Button
@@ -265,6 +275,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="@color/splashscreen"
+                    android:onClick="btn6clk"
                     android:text="Collect (+10%)"
                     android:visibility="visible" />
             </LinearLayout>
@@ -293,7 +304,8 @@
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:max="1000000000" />
                 </LinearLayout>
 
                 <Button
@@ -302,6 +314,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="@color/splashscreen"
+                    android:onClick="btn7clk"
                     android:text="Collect (+20%)"
                     android:visibility="visible" />
             </LinearLayout>

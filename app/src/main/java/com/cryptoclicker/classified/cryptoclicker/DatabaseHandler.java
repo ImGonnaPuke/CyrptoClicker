@@ -9,34 +9,31 @@ import  android.database.sqlite.SQLiteOpenHelper;
  */
 public class DatabaseHandler extends SQLiteOpenHelper
 {
-    private static final String DATABASE_NAME="CryptoClickerDatabase";
-    private static final String CURRENCY_COLUMN="Currency";
-    private static final String TABLE_NAME="Data";
+    private static final String DATABASE_NAME = "cryptoClickerDatabase";
+    private static final String TABLE_NAME = "data";
+    private static final String CURRENCY_COLUMN = "currency";
     public DatabaseHandler(Context applicationcontext) {
-        super(applicationcontext, DATABASE_NAME, null,1);
+        super(applicationcontext, DATABASE_NAME, null, 4);
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
         //create table to insert data
         String query;
-        query = "CREATE TABLE IF NOT EXISTS Data(Currency INTEGER);";
+        String query1;
+        query = "CREATE TABLE " +TABLE_NAME+ " ("+CURRENCY_COLUMN+ " INTEGER DEFAULT 0);";
         db.execSQL(query);
+        query1 = "INSERT INTO data (currency)"+
+                "VALUES (0);";
+        db.execSQL(query1);
 
 
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         String query ;
-        query = "DROP TABLE IF EXISTS Data";
+        query = "DROP TABLE IF EXISTS "+TABLE_NAME+";";
         db.execSQL(query);
         onCreate(db);
-    }
-
-    public double getCurrency() {
-
-        Cursor currencyDB = getReadableDatabase().rawQuery("SELECT Currency FROM Data ORDER BY ROWID ASC LIMIT 1", null);
-        double currency = currencyDB.getDouble(0);
-        return currency;
     }
 
     public Cursor fetchCurrency(SQLiteDatabase db) {
@@ -54,16 +51,5 @@ public class DatabaseHandler extends SQLiteOpenHelper
                 null, null, null, null,
                 sortOrder
         );
-    }
-
-    public double getValue() {
-
-        Cursor cursor = getReadableDatabase().rawQuery("select Currency from Data", null);
-        double total = 0;
-        if (cursor.getCount() > 0) {
-            cursor.moveToFirst();
-            total = cursor.getDouble(cursor.getColumnIndex("0"));
-        }
-        return total;
     }
 }

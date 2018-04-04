@@ -101,8 +101,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void writeCurrency() {
-        database = db.getWritableDatabase();
-        database.execSQL("UPDATE Data SET Currency=('"+counter+"')" );
+        SQLiteDatabase database = db.getWritableDatabase();
+        database.execSQL("UPDATE data SET currency=('" + counter + "')");
     }
 
     public int getCurrency() {

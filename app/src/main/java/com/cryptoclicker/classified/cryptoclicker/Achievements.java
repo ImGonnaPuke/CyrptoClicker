@@ -84,6 +84,14 @@ public class Achievements extends AppCompatActivity {
         }
     }
 
+    public void Achievements() {}
+
+    public void Achievements(boolean clk[]) {
+        for (int i=0; i < clk.length; i++) {
+            clicked[i] = clk[i];
+        }
+    }
+
     public void btn0clk(View view) {
         achMultiplier += multipliers[0];
         clicked[0] = true;

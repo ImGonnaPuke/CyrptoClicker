@@ -29,10 +29,6 @@
         </activity>
         <activity android:name=".Upgrades" />
         <activity android:name=".Achievements" />
-        <activity
-            android:name=".Achievementlist"
-            android:label="@string/title_activity_achievementlist"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ListOfAchievements" />
     </application>
 

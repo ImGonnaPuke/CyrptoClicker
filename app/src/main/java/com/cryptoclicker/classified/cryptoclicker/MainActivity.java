@@ -17,6 +17,7 @@ import android.widget.Toast;
 import android.widget.TextView;
 import android.os.Handler;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 counter = getCurrency();
-                showValue.setText(Integer.toString((int) counter)+ " BTC");
+                showValue.setText(formatVal(counter)+ " BTC");
                 Toast.makeText(getApplicationContext(),"Game loaded successfully.", Toast.LENGTH_SHORT).show();
             }
         });
@@ -91,6 +92,11 @@ public class MainActivity extends AppCompatActivity {
         Intent why1 = new Intent(MainActivity.this, Achievements.class);
         why1.putExtra("coins", counter);
         startActivityForResult(why1, 2);
+    }
+
+    private String formatVal(double value) {
+        DecimalFormat formatter = new DecimalFormat(",###");
+        return formatter.format(value);
     }
 
 
@@ -136,8 +142,8 @@ public class MainActivity extends AppCompatActivity {
                 double temp;
                 temp=counter/4;
                 counter=counter*1.25;
-                showValue.setText(Integer.toString((int) counter)+ " BTC");
-                Toast.makeText(getApplicationContext(),"GAINED "+(int)temp+" COINS", Toast.LENGTH_SHORT).show();
+                showValue.setText(formatVal(counter)+ " BTC");
+                Toast.makeText(getApplicationContext(),"GAINED "+formatVal(temp)+" COINS", Toast.LENGTH_SHORT).show();
                 hide1.setVisibility(View.INVISIBLE);
             }
         });
@@ -157,10 +163,10 @@ public class MainActivity extends AppCompatActivity {
         });
         */
 
-    public void test(View view){
+    public void coinClick(View view){
         counter += pwrClick * (1 + achMultiplier);
         playSound();
-        showValue.setText(Integer.toString((int) counter)+ " BTC");
+        showValue.setText(formatVal(counter)+ " BTC");
 
        if(random()==0){
             hide1.setVisibility(View.VISIBLE);
@@ -186,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void increment(){
         counter += upgrades.cycle() * ((double) tInterval/1000);
-        showValue.setText(Integer.toString((int) counter)+ " BTC");
+        showValue.setText(formatVal(counter)+ " BTC");
     }
 
     //Miguel: I put this method in to allow achievements to compare the score to unlock values, but I don't know if it works at runtime
@@ -201,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
             if(resultCode == RESULT_OK) {
                 counter = data.getDoubleExtra("coins", counter);
                 pwrClick = data.getIntExtra("power", pwrClick);
-                showValue.setText(Integer.toString((int) counter)+ " BTC");
+                showValue.setText(formatVal(counter)+ " BTC");
             }
 
         }

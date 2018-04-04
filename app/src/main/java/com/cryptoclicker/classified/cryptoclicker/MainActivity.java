@@ -33,6 +33,11 @@ public class MainActivity extends AppCompatActivity {
     public int rand;
     double achMultiplier;
 
+    int miniClick=0;
+    int countdown=0;
+    TextView coolPoints;
+    int ngPoints=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -46,10 +51,18 @@ public class MainActivity extends AppCompatActivity {
         loadGame();
         Show();
         Hide();
+        Hide2();
+        newGame1();
         hide1.setVisibility(View.INVISIBLE);
+        hide2.setVisibility(View.INVISIBLE);
+
         showValue = findViewById(R.id.Counter);
         handler.postDelayed(runnable, tInterval);
         counter = getCurrency();
+
+
+        coolPoints = findViewById(R.id.cPoints);
+        coolPoints.setVisibility(View.INVISIBLE);
 
        pwrClick = upgrades.getPower();
     }
@@ -107,6 +120,35 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(why1, 2);
     }
 
+    public Button newGame;
+    public void newGame1(){
+        newGame =  findViewById(R.id.newGame);
+        newGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                coolPoints.setVisibility(View.VISIBLE);
+
+
+                if(counter>0 && counter%10000==0){
+                    ngPoints+=1;
+                    counter-=10000;
+                    Toast.makeText(getApplicationContext(),"New Game Plus point added!", Toast.LENGTH_SHORT).show();
+                }
+
+                else{
+                    Toast.makeText(getApplicationContext(),"Not enough coins!", Toast.LENGTH_SHORT).show();
+                }
+                if(ngPoints==1){
+                    coolPoints.setText(Integer.toString((int) ngPoints) + " Cool Point!");}
+                else{
+                    coolPoints.setText(Integer.toString((int) ngPoints) + " Cool Points!");
+                }
+
+            }
+        });
+    }
+
     private String formatVal(double value) {
         DecimalFormat formatter = new DecimalFormat(",###");
         return formatter.format(value);
@@ -142,9 +184,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 hide1.setVisibility(View.VISIBLE);
+                hide2.setVisibility(View.VISIBLE);
             }
         });
     }
+
+
 
     public Button hide1;
     public void Hide(){
@@ -162,6 +207,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public Button hide2;
+    public void Hide2(){
+        hide2 =  findViewById(R.id.event2);
+        hide2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                countdown=1;
+            }
+        });
+    }
         /*
         Button main1 =  findViewById(R.id.magic);
 
@@ -177,14 +232,32 @@ public class MainActivity extends AppCompatActivity {
         */
 
     public void coinClick(View view){
-        counter += pwrClick * (1 + achMultiplier);
-        playSound();
-        showValue.setText(formatVal(counter)+ " BTC");
+        if(countdown==1){
 
-       if(random()==0){
+            counter+=counter;
+            if(miniClick>=10){
+                countdown=0;
+
+            }
+            else{
+                miniClick+=1;
+            }
+
+        }else {
+            counter += pwrClick;
+        }
+
+        playSound();
+        showValue.setText(Integer.toString((int) counter) + " BTC");
+
+        if(random()==0){
             hide1.setVisibility(View.VISIBLE);
         }
+        if(random()==10){
+            hide2.setVisibility(View.VISIBLE);
+        }
     }
+
 
     private Runnable runnable = new Runnable() {
         @Override
@@ -201,6 +274,10 @@ public class MainActivity extends AppCompatActivity {
         Random r = new Random();
         int i1 = r.nextInt(10 )  ;
         return i1;
+    }
+
+    public void deb(View view){
+        counter+=10000;
     }
 
     private void increment(){

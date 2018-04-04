@@ -49,8 +49,21 @@ public class MainActivity extends AppCompatActivity {
         hide1.setVisibility(View.INVISIBLE);
         showValue = findViewById(R.id.Counter);
         handler.postDelayed(runnable, tInterval);
+        counter = getCurrency();
 
        pwrClick = upgrades.getPower();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        writeCurrency();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        writeCurrency();
     }
 
     public Button savegame;

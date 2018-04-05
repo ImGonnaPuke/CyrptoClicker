@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         backgroundimage.startAnimation(backgroundrotate);
         saveGame();
         loadGame();
-        Show();
+     //   Show();
         Hide();
         Hide2();
         newGame1();
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
                 coolPoints.setVisibility(View.VISIBLE);
 
 
-                if(counter>0 && counter%10000==0){
+                if(counter>=10000){
                     ngPoints+=1;
                     counter-=10000;
                     Toast.makeText(getApplicationContext(),"New Game Plus point added!", Toast.LENGTH_SHORT).show();
@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Handler handler = new Handler();
-
+/*
     public Button show1;
     public void Show(){
        show1 = findViewById(R.id.show);
@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+*/
 
 
     public Button hide1;
@@ -214,6 +214,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 countdown=1;
+                Toast.makeText(getApplicationContext(),"OMEGA EVENT ACTIVATED", Toast.LENGTH_SHORT).show();
+                hide2.setVisibility(View.INVISIBLE);
             }
         });
     }
@@ -272,7 +274,7 @@ public class MainActivity extends AppCompatActivity {
 
         //SystemClock.sleep(5000);
         Random r = new Random();
-        int i1 = r.nextInt(10 )  ;
+        int i1 = r.nextInt(11 )  ;
         return i1;
     }
 

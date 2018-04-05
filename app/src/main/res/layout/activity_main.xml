@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/rubik"
-
+        android:onClick="Achievements"
         android:text="Achievements"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/upgrades"
@@ -86,25 +86,16 @@
         android:id="@+id/hide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/rubik"
         android:text="hide"
-        app:layout_constraintBottom_toTopOf="@+id/upgrades"
-        app:layout_constraintEnd_toStartOf="@+id/background"
-        app:layout_constraintHorizontal_bias="0.131"
-        app:layout_constraintStart_toEndOf="@+id/magic"
-        app:layout_constraintTop_toBottomOf="@+id/magic"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/show"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="show"
         app:layout_constraintBottom_toTopOf="@+id/background"
         app:layout_constraintEnd_toStartOf="@+id/magic"
-        app:layout_constraintHorizontal_bias="0.77"
+        app:layout_constraintHorizontal_bias="0.21"
         app:layout_constraintStart_toEndOf="@+id/magic"
         app:layout_constraintTop_toBottomOf="@+id/magic"
         app:layout_constraintVertical_bias="0.0" />
+
+
 
     <Button
         android:id="@+id/savegame"
@@ -145,16 +136,17 @@
 
     <Button
         android:id="@+id/newGame"
-        android:layout_width="wrap_content"
+        android:layout_width="86dp"
         android:layout_height="wrap_content"
-
+        android:fontFamily="@font/rubik"
         android:text="New Game"
-        app:layout_constraintBottom_toTopOf="@+id/background"
-        app:layout_constraintEnd_toStartOf="@+id/upgrades"
+
+        app:layout_constraintBottom_toTopOf="@+id/magic"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/achi"
-        app:layout_constraintTop_toBottomOf="@+id/upgrades"
-        app:layout_constraintVertical_bias="0.042" />
+        app:layout_constraintStart_toEndOf="@+id/magic"
+        app:layout_constraintTop_toBottomOf="@+id/Counter"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/cPoints"
@@ -162,6 +154,7 @@
         android:layout_height="wrap_content"
         android:text="Cool Points: "
         android:textSize="28dp"
+
         app:layout_constraintBottom_toTopOf="@+id/magic"
         app:layout_constraintEnd_toStartOf="@+id/magic"
         app:layout_constraintHorizontal_bias="0.5"
@@ -172,12 +165,13 @@
         android:id="@+id/event2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/rubik"
         android:text="other"
-        app:layout_constraintBottom_toTopOf="@+id/magic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/Counter"
-        app:layout_constraintTop_toBottomOf="@+id/Counter"
+        app:layout_constraintBottom_toTopOf="@+id/background"
+        app:layout_constraintEnd_toStartOf="@+id/magic"
+        app:layout_constraintHorizontal_bias="0.77"
+        app:layout_constraintStart_toEndOf="@+id/magic"
+        app:layout_constraintTop_toBottomOf="@+id/magic"
         app:layout_constraintVertical_bias="0.0" />
 
 

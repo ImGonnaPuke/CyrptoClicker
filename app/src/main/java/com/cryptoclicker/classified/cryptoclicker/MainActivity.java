@@ -22,6 +22,8 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
+    System.out.println("butts")
+/*
     TextView showValue;
     DatabaseHandler db = new DatabaseHandler (this);
     SQLiteDatabase database;
@@ -176,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Handler handler = new Handler();
-/*
+
     public Button show1;
     public void Show(){
        show1 = findViewById(R.id.show);
@@ -188,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-*/
+
 
 
     public Button hide1;
@@ -231,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
                 clicks = clicks+1;
             }
         });
-        */
+
 
     public void coinClick(View view){
         if(countdown==1){
@@ -308,5 +310,7 @@ public class MainActivity extends AppCompatActivity {
                 achMultiplier = data.getDoubleExtra("achMultiplier", achMultiplier);
             }
         }
+
     }
+    */
 }

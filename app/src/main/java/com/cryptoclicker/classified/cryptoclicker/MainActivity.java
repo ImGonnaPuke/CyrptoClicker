@@ -22,7 +22,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    System.out.println("butts")
+    System.out.println("pupanunu people's prophecy")
 /*
     TextView showValue;
     DatabaseHandler db = new DatabaseHandler (this);

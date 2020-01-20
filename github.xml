@@ -1,4 +1,9 @@
 <application>
+  <component name="GithubAccounts">
+    <account id="e3c7dc72-97d1-4fe0-8e35-98a32bdb6a6f" name="ImGonnaPuke">
+      <server host="github.com" />
+    </account>
+  </component>
   <component name="GithubSettings">
     <option name="LOGIN" value="ahorle@oakland.edu" />
     <option name="AUTH_TYPE" value="BASIC" />
